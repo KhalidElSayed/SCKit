@@ -159,10 +159,7 @@
     UIButton *dimmingButton = [self dimmingButton];
     [dimmingButton setFrame:[window bounds]];
     [window insertSubview:dimmingButton belowSubview:self];
-    
-    // Make the window visible
-    [window makeKeyAndVisible];
-    
+
     // Listen to keyboard events
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -173,6 +170,9 @@
     // toolbar.
     [self addSubview:[self textField]];
     [[self textField] becomeFirstResponder];
+
+    // Make the window visible
+    [window makeKeyAndVisible];
 }
 
 - (void)cancel:(id)sender
@@ -246,7 +246,7 @@
                          [_dimmingButton setAlpha:0.0];
                      }
                      completion:^(BOOL finished) {
-                         [_previousWindow makeKeyAndVisible];
+                         [_previousWindow makeKeyWindow];
                          [self setWindow:nil];  // Break the retain loop and allow both self and the UIWindow to be reclaimed.
                      }];
 }
