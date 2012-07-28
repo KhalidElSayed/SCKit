@@ -53,13 +53,13 @@
         {
             if ([argument returnType] == SCVariableTypeBoolean)
             {
-                [NSException raise:SCGenericException format:@"Invalid argument definition: %@. Positional arguments may not have boolean return types."], [argument argumentId];
+                [NSException raise:SCGenericException format:@"Invalid argument definition: %@. Positional arguments may not have boolean return types.", [argument argumentId]];
             }
             if ([argument isVariableLength])
             {
                 if (foundVariableLengthArg)
                 {
-                    [NSException raise:SCGenericException format:@"Invalid argument definition: %@. A different variable-length argument was previously found."], [argument argumentId];
+                    [NSException raise:SCGenericException format:@"Invalid argument definition: %@. A different variable-length argument was previously found.", [argument argumentId]];
                 }
                 foundVariableLengthArg = YES;
             }
@@ -77,7 +77,7 @@
         }
         else
         {
-            [NSException raise:SCGenericException format:@"Invalid argument definition: %@. This definition has an unknown argument type."], [argument argumentId];
+            [NSException raise:SCGenericException format:@"Invalid argument definition: %@. This definition has an unknown argument type.", [argument argumentId]];
         }
     }
     
